@@ -104,29 +104,6 @@ class LinkedList {
          console.log('Node @ index: ',index,' not found');
     }
 
-    //append(value) adds a new node containing value to the end of the list
-    /*
-    append(value){
-        if(this.size === 0){
-            console.log('creating head');
-            let index = 1;
-            let nextNode = null;
-            this.head = new Node(value,index,nextNode);
-            this.tail = this.head;
-            this.size = this.size + 1;
-        }else{
-            this.tail.logNodeValue();
-            console.log('appending: ',value);
-            let previousNode = new Node(this.tail.value, this.tail.index, this.tail);
-            previousNode.logNodeValue();                           //remember current last                   
-            let newIndex= this.size + 1;                        //the new index    
-            this.tail = new Node(value, newIndex, null);        //new node becomes new tail
-            previousNode.nextNode = this.tail;                           //previous node now points to new tail
-            this.size = newIndex;                               //updates the linked list counter
-            this.tail.logNodeValue();
-        }
-    }
-    */
    //append(value) adds a new node containing value to the end of the list
    append(value){
         if(this.size === 0){
@@ -147,7 +124,14 @@ class LinkedList {
             this.tail.logNodeValue();
         }
     }
-    //head 
+    
+
+    //prepend(value) adds a new node containing value to the start of the list
+    prepend (value) {
+        let newNode = new Node(value, this.head);
+        this.head = newNode;
+        this.size++;
+    }
 
 
     //toString represents LinkedList objects as strings for preview in the console. 
