@@ -1,0 +1,123 @@
+Linked List text
+
+index =	0		NOT NEEDED JUST COUNT
+head  = null
+tail  = null
+size  = 0 		later equivalent of index+1 	list {}
+			--------------------------------NOT ACTUALLY NEEDED IN NODE DATA
+append node dog		v
+dog = new Node('dog', size++, next = null); 		//dog index = 0 
+head = dog
+tail = dog
+
+     head & tail	
+list{{dog,null}} dog at index 0 size = 1		//list size = 1
+index  0,                 
+
+append node cat
+cat = new Node('cat', size++, next = null );		//cat index = 1
+dog.next = cat;
+tail = cat;
+
+      head      tail
+list{{dog,cat},{cat,null}}				//list size = 2
+index  0,        1
+.........
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+append node turtle
+turtle = new Node('turtle', next = null );		//turtle index = 5
+snake.next = turtle;
+tail = turtle
+size++
+      head             				       tail
+list{{dog,cat},{cat,parrot},...........{snake,turtle},{turtle, null}} //list size = 6
+index  0,        1,                      4,              5
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+ //append(value) adds a new node containing value to the end of the list
+    append(value){
+        if(this.size === 0){
+            console.log('creating head');
+            let index = 1;
+            let nextNode = null;
+            this.head = new Node(value,index,nextNode);
+            this.tail = this.head;
+            this.size = this.size + 1;
+        }else{
+            this.tail.logNodeValue();				//show current tail
+            console.log('appending: ',value);			//show we are appending
+            let newNode = new Node(value, null);		//create new tail node
+            this.tail.nextNode = newNode;                   	//set current tail to point to newNode
+            this.size++;                        		//increment the list size     
+            this.tail = new Node			        //new node becomes new tail
+            this.tail.logNodeValue();
+        }
+    }
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Prepend ant
+head = dog
+tail = turtle
+ant = new Node('ant', head.nextNode)
+head = ant
+tail = turtle
+size++
+	head							tail
+list{ {ant,dog}, {dog,cat}, {cat, parrot} ......{snake,turtle},{turtle, null}} //list size = 7
+index   0,	   1,	      2, 		  5,              6
+ 
+
+Insert goat at index 2
+head = ant
+tail = turtle
+
+if index = 0 then prepend goat (false)
+else
+iterate over list until count = index -1
+at count  = 0;			(0)
+nodeNext  = head.nextNode 	(dog)
+if count === index-1 		(false)
+so					then nodeNext.nextNode = ....
+else
+count++				(1)
+if count === index-1 		(true)
+so					
+then nodeNext.nextNode = goat = new Node ('goat', nodeNext.nextNode);	('goat', cat)
+list.size++
+count++
+if count === index stop
+
+	head							            tail
+list{ {ant,dog}, {dog,goat}, {goat,cat}, {cat,parrot} ......{snake,turtle},{turtle, null}} //size = 8
+index   0,	   1,	       2, 	   3     	      6,              7
+//list.size = 8
+
+pop tail turtle at index 7
+head = ant
+tail = turtle
+size = 8
+iterate over list until count = list.size -1
+at count  = 0;			(0)		0	1	2	3	4	5	6
+let current = head
+nodeNext  = head.nextNode 	(dog)		dog	goat	cat	parrot  hamst..snake	turtle
+if count === list.size -2	(false)
+so					then ....
+else
+count++				(1)
+let current = nodeNext
+nodeNext = nodeNext.nextNode 	(goat)		goat	cat	parrot	hamster	snake	turtle	null
+if count === list.size -2	(false)
+repeat until
+count++				(6) -> count -> index -> snake -> next -> turtle				
+nodeNext = nodeNext.nextNode 	(turtle)
+
+if count === list.size -2	(true)
+nodeNext = null
+list.size--
+
+	head						     tail
+list{ {ant,dog}, {dog,goat}, {goat,cat}, {cat,parrot} ......{snake,null}} //size = 7
+index   0,	   1,	       2, 	   3     	      6
+//list.size = 8
+
+
+
+
