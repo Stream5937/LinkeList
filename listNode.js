@@ -6,12 +6,12 @@ class Node {
     //private variables
     _value = null;          //the object data
     _nextNode = null;       //the next node
-    _index;                 //incremented  by 1 for each appended Node 
+   // index not needed use counter see list  
+                            //incremented  by 1 for each appended Node 
                             //initially head becomes 1 but tail also 1
                             //but each appended Node becomes tail = 2 , 3, 4 ....etc
 
     //constructor
-    //constructor (value, index, nextNode) {
     constructor (value, nextNode) {
         //cater for incorrect invocation i.e not using 'new' keyword
         if(!(this instanceof Node)) {
@@ -23,8 +23,7 @@ class Node {
          }else{
           //the node
           this._value = value;                //node content
-          this._nextNode = nextNode;          //the next node
-          //this._index = index;                
+          this._nextNode = nextNode;          //the next node              
         }
       }
 
@@ -41,19 +40,9 @@ class Node {
     set nextNode (nextNode) {
         this._nextNode = nextNode; 
     }
-    /*
-    get index (){
-        return this._index;
-    }
-
-    // Member functions
-    logNodeIndex () {
-        console.log(', index: ', this._index);
-    }
-    */
+    
     logNodeValue () {
         console.log('@logNodeValue: ');
-        //console.log('this:',this);
         console.log('--> ( ',this.value,' ) ');
     }
 }

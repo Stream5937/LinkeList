@@ -18,11 +18,14 @@ list.append("hamster");
 list.append("snake");
 list.append("turtle");
 console.log('\n----------------------------------------------------\n');
-//console.log(JSON.stringify(list));
 list.toString();
 console.log('\n----------------------------------------------------\n');
 list.prepend("ant");
 console.log('\n----------------------------------------------------\n');
-//console.log(JSON.stringify(list));
 list.toString();
+console.log('\n----------------------------------------------------\n');
+console.log('head node at index = 0 ', list.at(0));
+console.log('interim node at index = 3 ',list.at(3));
+console.log('tail node at index = 6 ',list.at(6));
+console.log('Error at index = 7',list.at(7));           // OK ERROR RESPONSE REQUIRED
 console.log('\n----------------------------------------------------\n');

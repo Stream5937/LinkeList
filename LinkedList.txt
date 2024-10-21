@@ -22,7 +22,7 @@ tail = cat;
       head      tail
 list{{dog,cat},{cat,null}}				//list size = 2
 index  0,        1
-.........
+
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 append node turtle
 turtle = new Node('turtle', next = null );		//turtle index = 5
@@ -33,25 +33,7 @@ size++
 list{{dog,cat},{cat,parrot},...........{snake,turtle},{turtle, null}} //list size = 6
 index  0,        1,                      4,              5
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
- //append(value) adds a new node containing value to the end of the list
-    append(value){
-        if(this.size === 0){
-            console.log('creating head');
-            let index = 1;
-            let nextNode = null;
-            this.head = new Node(value,index,nextNode);
-            this.tail = this.head;
-            this.size = this.size + 1;
-        }else{
-            this.tail.logNodeValue();				//show current tail
-            console.log('appending: ',value);			//show we are appending
-            let newNode = new Node(value, null);		//create new tail node
-            this.tail.nextNode = newNode;                   	//set current tail to point to newNode
-            this.size++;                        		//increment the list size     
-            this.tail = new Node			        //new node becomes new tail
-            this.tail.logNodeValue();
-        }
-    }
+
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Prepend ant
 head = dog
@@ -64,7 +46,9 @@ size++
 list{ {ant,dog}, {dog,cat}, {cat, parrot} ......{snake,turtle},{turtle, null}} //list size = 7
 index   0,	   1,	      2, 		  5,              6
  
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Insert goat at index 2
 head = ant
 tail = turtle
@@ -89,6 +73,10 @@ if count === index stop
 list{ {ant,dog}, {dog,goat}, {goat,cat}, {cat,parrot} ......{snake,turtle},{turtle, null}} //size = 8
 index   0,	   1,	       2, 	   3     	      6,              7
 //list.size = 8
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 pop tail turtle at index 7
 head = ant
