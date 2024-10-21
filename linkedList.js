@@ -198,6 +198,24 @@ class LinkedList {
         return doesContain;             //false
     }
 
+    //find(value) returns the index of the node containing value, or null.
+    find (value) {
+        let doesContain = false;
+        let count = 0;
+        let node = this.head;
+        do{
+            if(node.value === value){
+                doesContain = true;
+                return count;           //true count is index
+            }
+            else{
+                node = node.nextNode;
+            }
+            count++;
+        }while (count < this.size);
+        return null;                    //false so null
+    }
+
     //toString represents LinkedList objects as strings for preview in the console. 
     //The format being: ( value ) -> ( value ) -> ( value ) -> null
 

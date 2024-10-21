@@ -37,3 +37,8 @@ list.toString();
 console.log('list contains snake? ', list.contains('snake'));
 console.log('list contains rabbit? ',list.contains('rabbit'));
 console.log('\n----------------------------------------------------\n');
+console.log('\n----------------------------------------------------\n');
+list.toString();
+console.log('list contains snake at index: ', list.find('snake'));
+console.log('list contains rabbit at index ', list.find('rabbit'));
+console.log('\n----------------------------------------------------\n');
