@@ -86,24 +86,7 @@ class LinkedList {
         this._size = newSize;
     }
 
-    //member functions
-    //at(index) returns the node at the given index
-    at(index) {
-         let nodeAtIndex;
-         let currentNode = this.head;
-         if(currentNode.nextNode === null){console.log('No such element: empty list');}
-         if(currentNode.index === index){return currentNode;}
-         let next = currentNode.nextNode;
-         while(next.nextNode != null){
-            if(next.index === index){
-                return next;                //returns the node  @ index
-            }else{
-                next = next.nextNode;
-            }
-         }
-         console.log('Node @ index: ',index,' not found');
-    }
-
+   //member functions
    //append(value) adds a new node containing value to the end of the list
    append(value){
         if(this.size === 0){
@@ -133,16 +116,85 @@ class LinkedList {
         this.size++;
     }
 
+    /*
+        NB all implemented as getters
+        size returns the total number of nodes in the list
+        head returns the first node in the list
+        tail returns the last node in the list
+    */
+
+    //at(index) returns the node at the given index
+    at (index) {
+        let count = 0;
+        let node;
+        if(this.head == null ) {console.log ('invalid index: list returns null'); return; }
+        node = this.head;
+       // console.log('head.nextNode.nextNode: ',node.nextNode.nextNode.value);
+        if(index === 0){return node;}   //returning head
+        do {
+            count++;
+            if(count >= this.size){console.log('invalid index: list returns tail before index!'); return;}
+            if(!(count > index) ){
+                node = node.nextNode;
+                if(index === count){console.log('returning at index === count: ',count);return node;}
+            }else{node = null;}
+        }while((count < this.size));  
+    }
+
+    //  pop removes the last element from the list ( and returns its value?)
+    //  say pop tail turtle at index 7
+    //  head = ant
+    //  tail = turtle
+    //size = 8
+    //iterate over list until count = list.size -2
+    pop () {
+        //console.log('at: pop')
+        let size = this.size;
+        //console.log('size: ',size);
+        //handle empty list
+        if(size === 0){console.log('Invalid: Returning empty list!');}
+
+        let count  = 0;
+        let current = this.head;                    // ant
+        let nodeNext  = this.head.nextNode;         // dog
+        
+        //handle list is just head
+        if (size === 1) {
+            console.log('Removing head - list now empty');
+            let value = this.head.value; 
+            this.head = null;
+            this.size--;
+            return value;
+        }
+
+        //handle pop the tail leaving remainder of list with new tail
+        //size is 2 or greater                      // say ant --> dog --> goat      (size is 3)
+        do{                                         // count here initially = 0
+            //console.log('count: ', count);
+            if (count === size-2) {                 // say count = 3-2 = 1
+                //reached intended new tail
+                this.tail = current;                // dog
+                current.nextNode = null;            // null
+                this.size--;                        // size = 2         
+                return nodeNext.value;              // return goat 
+            }else{
+                count++;                            // 0 -> 1, 
+                current = nodeNext;                 // ant -> dog                        
+                nodeNext = nodeNext.nextNode;       // dog -> goat
+            }    				
+        }while(count < size);
+    }
+
 
     //toString represents LinkedList objects as strings for preview in the console. 
     //The format being: ( value ) -> ( value ) -> ( value ) -> null
 
     toString () {
-        console.log('list size: ',this.size);
+        //console.log('list size: ',this.size);
         if(this.size ===  0){
             console.log('null');
         }else{ 
-           console.log('logging list: ');
+          // console.log('logging list: ');
            let list = "linked list : ";
            let node = this.head;
            list += " ( ";

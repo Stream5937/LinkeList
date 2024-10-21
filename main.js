@@ -29,3 +29,7 @@ console.log('interim node at index = 3 ',list.at(3));
 console.log('tail node at index = 6 ',list.at(6));
 console.log('Error at index = 7',list.at(7));           // OK ERROR RESPONSE REQUIRED
 console.log('\n----------------------------------------------------\n');
+list.toString();
+console.log('list tail is: ',list.tail.value,' :pop() (i.e. tail) returns: ', list.pop());
+list.toString();
+console.log('\n----------------------------------------------------\n');
