@@ -33,3 +33,7 @@ list.toString();
 console.log('list tail is: ',list.tail.value,' :pop() (i.e. tail) returns: ', list.pop());
 list.toString();
 console.log('\n----------------------------------------------------\n');
+list.toString();
+console.log('list contains snake? ', list.contains('snake'));
+console.log('list contains rabbit? ',list.contains('rabbit'));
+console.log('\n----------------------------------------------------\n');

@@ -142,11 +142,6 @@ class LinkedList {
     }
 
     //  pop removes the last element from the list ( and returns its value?)
-    //  say pop tail turtle at index 7
-    //  head = ant
-    //  tail = turtle
-    //size = 8
-    //iterate over list until count = list.size -2
     pop () {
         //console.log('at: pop')
         let size = this.size;
@@ -185,6 +180,23 @@ class LinkedList {
         }while(count < size);
     }
 
+    //contains(value) returns true if the passed in value is in the list and otherwise returns false.
+    contains (value) {
+        let doesContain = false;
+        let count = 0;
+        let node = this.head;
+        do{
+            if(node.value === value){
+                doesContain = true;
+                return doesContain;     //true
+            }
+            else{
+                node = node.nextNode;
+            }
+            count++;
+        }while (count < this.size);
+        return doesContain;             //false
+    }
 
     //toString represents LinkedList objects as strings for preview in the console. 
     //The format being: ( value ) -> ( value ) -> ( value ) -> null
