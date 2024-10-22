@@ -145,7 +145,7 @@ class LinkedList {
     pop () {
         //console.log('at: pop')
         let size = this.size;
-        //console.log('size: ',size);
+        console.log('@@size: ',size,' @@');
         //handle empty list
         if(size === 0){console.log('Invalid: Returning empty list!');}
 
@@ -165,17 +165,19 @@ class LinkedList {
         //handle pop the tail leaving remainder of list with new tail
         //size is 2 or greater                      // say ant --> dog --> goat      (size is 3)
         do{                                         // count here initially = 0
-            //console.log('count: ', count);
+            console.log('** count: ', count, 'size-2: ', size-2,' **');
             if (count === size-2) {                 // say count = 3-2 = 1
                 //reached intended new tail
                 this.tail = current;                // dog
                 current.nextNode = null;            // null
-                this.size--;                        // size = 2         
+                this.size--;                        // size = 2 
+                console.log('** nodeNext**', nodeNext);        
                 return nodeNext.value;              // return goat 
             }else{
                 count++;                            // 0 -> 1, 
                 current = nodeNext;                 // ant -> dog                        
                 nodeNext = nodeNext.nextNode;       // dog -> goat
+                console.log('** pop count, current, nodeNext:  ', count,', ',current,', ', nodeNext, ' **');
             }    				
         }while(count < size);
     }
@@ -281,6 +283,34 @@ class LinkedList {
     Tip: When you insert or remove a node, consider how it will affect the existing nodes. 
     Some of the nodes will need their nextNode link updated.
     */
+   removeAt (index) {
+        if(index < 0){console.log('Failed to remove at invalid index: ', index);return;}
+        if(index === (this.size)-1 ){
+            let val = this.pop();
+            console.log('Index at tail so popping value', val);
+            return val;
+        }
+        if(index >  this.size-1){console.log('Failed to remove at invalid index: ', index);return;}
+        let currentNode = this.head;
+        let nodeNext = this.head.nextNode;
+        if(index === 0){console.log('Index 0 so new head'), this.head = nodeNext; this.size--;return;}
+        let count = 0;
+        do {
+            console.log('count: ',count, 'currentNode: ',currentNode);
+            if( count === index-1){
+                console.log('Removing ', nodeNext, ' at index: ', index);
+                let val = nodeNext.value;
+                currentNode.nextNode = nodeNext.nextNode;
+                this.size--;
+                return val;         //returns value of node removed
+            }
+            else {
+                currentNode = nodeNext;
+                nodeNext = currentNode.nextNode;
+            }
+            count++;
+        }while(! (count > index) );
+    }
 
 }
 
