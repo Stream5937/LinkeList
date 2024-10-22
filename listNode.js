@@ -40,7 +40,8 @@ class Node {
     set nextNode (nextNode) {
         this._nextNode = nextNode; 
     }
-    
+
+    //class method
     logNodeValue () {
         console.log('@logNodeValue: ');
         console.log('--> ( ',this.value,' ) ');

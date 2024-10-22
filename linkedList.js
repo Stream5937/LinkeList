@@ -96,15 +96,15 @@ class LinkedList {
             this.head = new Node(value,nextNode);
             this.tail = this.head;
             this.size = this.size + 1;
-            this.head.logNodeValue;
+          //  this.head.logNodeValue;
         }else{
-            this.tail.logNodeValue();				    //show current tail
+           // this.tail.logNodeValue();				    //show current tail
             console.log('appending: ',value);			//show we are appending
             let newNode = new Node(value, null);		//create new tail node
             this.tail.nextNode = newNode;               //set current tail to point to newNode
             this.size++;                        		//increment the list size     
             this.tail = newNode;			            //new node becomes new tail
-            this.tail.logNodeValue();
+           // this.tail.logNodeValue();
         }
     }
     
@@ -241,6 +241,46 @@ class LinkedList {
            console.log(list);
         }
     }
+
+    //-------------------------------- EXTRAS --------------------------------------------------
+    /*
+    insertAt(value, index) that inserts a new node with the provided value at the given index.
+    Tip: When you insert or remove a node, consider how it will affect the existing nodes. 
+    Some of the nodes will need their nextNode link updated.
+    */
+    insertAt (value, index) {
+        if(index < 0){console.log('Failed to insert at invalid index: ', index);return;}
+        if(index === 0){console.log('Index 0 so prepending value'), this.prepend(value);return;}
+        if(index === (this.size)-1 ){console.log('Index at tail so appending value'), this.append(value);return;}
+        if(index >  this.size-1){console.log('Failed to insert at invalid index: ', index);return;}
+        let count = 1;
+        let currentNode = this.head;
+        let newNode;
+        let nodeNext = this.head.nextNode;
+        do {
+            //console.log('count: ',count, 'currentNode: ',currentNode);
+            if( count === index){
+                newNode = new Node(value, nodeNext);
+                currentNode.nextNode = newNode;
+                this.size++;
+                return;
+            }else{
+                currentNode = nodeNext;
+                if(nodeNext != null){
+                    nodeNext = nodeNext.nextNode;
+                }
+            }
+            count++;
+        }while(!(count > index ));
+        console.log('Failed to insert at invalid index: ', index);
+        return;
+    }
+
+    /*
+    removeAt(index) that removes the node at the given index.
+    Tip: When you insert or remove a node, consider how it will affect the existing nodes. 
+    Some of the nodes will need their nextNode link updated.
+    */
 
 }
 
