@@ -96,15 +96,15 @@ class LinkedList {
             this.head = new Node(value,nextNode);
             this.tail = this.head;
             this.size = this.size + 1;
-          //  this.head.logNodeValue;
+          
         }else{
-           // this.tail.logNodeValue();				    //show current tail
+           
             console.log('appending: ',value);			//show we are appending
             let newNode = new Node(value, null);		//create new tail node
             this.tail.nextNode = newNode;               //set current tail to point to newNode
             this.size++;                        		//increment the list size     
             this.tail = newNode;			            //new node becomes new tail
-           // this.tail.logNodeValue();
+           
         }
     }
     
@@ -129,7 +129,7 @@ class LinkedList {
         let node;
         if(this.head == null ) {console.log ('invalid index: list returns null'); return; }
         node = this.head;
-       // console.log('head.nextNode.nextNode: ',node.nextNode.nextNode.value);
+       
         if(index === 0){return node;}   //returning head
         do {
             count++;
@@ -143,15 +143,15 @@ class LinkedList {
 
     //  pop removes the last element from the list ( and returns its value?)
     pop () {
-        //console.log('at: pop')
+        
         let size = this.size;
-        console.log('@@size: ',size,' @@');
+        
         //handle empty list
         if(size === 0){console.log('Invalid: Returning empty list!');}
 
         let count  = 0;
-        let current = this.head;                    // ant
-        let nodeNext  = this.head.nextNode;         // dog
+        let current = this.head;
+        let nodeNext  = this.head.nextNode;
         
         //handle list is just head
         if (size === 1) {
@@ -163,21 +163,19 @@ class LinkedList {
         }
 
         //handle pop the tail leaving remainder of list with new tail
-        //size is 2 or greater                      // say ant --> dog --> goat      (size is 3)
-        do{                                         // count here initially = 0
-            console.log('** count: ', count, 'size-2: ', size-2,' **');
-            if (count === size-2) {                 // say count = 3-2 = 1
+        //size is 2 or greater                      
+        do{                                         
+            
+            if (count === size-2) {                 
                 //reached intended new tail
-                this.tail = current;                // dog
-                current.nextNode = null;            // null
-                this.size--;                        // size = 2 
-                console.log('** nodeNext**', nodeNext);        
-                return nodeNext.value;              // return goat 
+                this.tail = current;
+                current.nextNode = null;
+                this.size--;       
+                return nodeNext.value;
             }else{
-                count++;                            // 0 -> 1, 
-                current = nodeNext;                 // ant -> dog                        
-                nodeNext = nodeNext.nextNode;       // dog -> goat
-                console.log('** pop count, current, nodeNext:  ', count,', ',current,', ', nodeNext, ' **');
+                count++;  
+                current = nodeNext;                       
+                nodeNext = nodeNext.nextNode;
             }    				
         }while(count < size);
     }
@@ -222,11 +220,11 @@ class LinkedList {
     //The format being: ( value ) -> ( value ) -> ( value ) -> null
 
     toString () {
-        //console.log('list size: ',this.size);
+        
         if(this.size ===  0){
             console.log('null');
         }else{ 
-          // console.log('logging list: ');
+          
            let list = "linked list : ";
            let node = this.head;
            list += " ( ";
@@ -260,7 +258,7 @@ class LinkedList {
         let newNode;
         let nodeNext = this.head.nextNode;
         do {
-            //console.log('count: ',count, 'currentNode: ',currentNode);
+            
             if( count === index){
                 newNode = new Node(value, nodeNext);
                 currentNode.nextNode = newNode;
@@ -296,7 +294,6 @@ class LinkedList {
         if(index === 0){console.log('Index 0 so new head'), this.head = nodeNext; this.size--;return;}
         let count = 0;
         do {
-            console.log('count: ',count, 'currentNode: ',currentNode);
             if( count === index-1){
                 console.log('Removing ', nodeNext, ' at index: ', index);
                 let val = nodeNext.value;
